@@ -12,7 +12,6 @@ def index():
     return render_template('index.html')
 @app.route('/predict', methods=['POST'])
 def predict():
-    print("Welcome to predictions\n")
     Sepal_Length = request.form['sepal_length']
     Sepal_Width = request.form['sepal_width']
     Petak_Length = request.form['petal_length']
