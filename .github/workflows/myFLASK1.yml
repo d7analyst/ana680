@@ -1,0 +1,32 @@
+name: Python package
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 
+          pip install -r requirements.txt
+      - name: run_program
+        run: python app.py
+      - name: Deploy to Heroku
+        env:
+          HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+        run: |
+          git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/ana680-2.git
+          git push heroku main
+     
