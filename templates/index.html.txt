@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breast Cancer Prediction</title>
+</head>
+<body>
+    <form action="{{ url_for('predict')}}" method="POST">
+        Clump_Thickness:  <input type="number" name="Clump_Thickness"><br>
+        Uniformity_of_Cell_Size:   <input type="number" name="Uniformity_of_Cell_Size"><br>
+        Marginal_Adhesion:  <input type="number" name="Marginal_Adhesion"><br>
+      
+        <input type=submit    value=Submit>
+   </form>
+    My prediction: {{ predict }}
+</body>
+</html>
