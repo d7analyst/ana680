@@ -5,15 +5,18 @@
     <title>Breast Cancer Prediction</title>
 </head>
 <body>
+    <h1>Breast Cancer Prediction</h1>
+
     <form action="{{ url_for('predict')}}" method="POST">
         <label for = "cthickness">Clump_Thickness: </label><br>
-	<input type="number" id ="cthickness" name="Clump_Thickness" value = 1><br>
+	<input type="number" id ="cthickness" name="Clump_Thickness" value="<?php if(isset($_POST['myInput'])){ print $_POST['myInput']; } ?>" /><br>
         <label for ="UOCS">Uniformity_of_Cell_Size:</label><br>   
 	<input type="number" id = "UOCS" name="Uniformity_of_Cell_Size" value = 1><br>
         <label for ="MA"> Marginal_Adhesion: </label><br>
 	<input type="number" id = "MA" name="Marginal_Adhesion" value = 1><br>
         <input type="submit" value="Submit">
-   </form>
+   </form><br>
     My prediction: {{ predict }}
 </body>
 </html>
+
